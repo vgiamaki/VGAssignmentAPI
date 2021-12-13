@@ -5,6 +5,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
+using Domain.Enums;
 
 namespace Application.Matches.Commands.UpdateMatch
 {
@@ -21,6 +22,8 @@ namespace Application.Matches.Commands.UpdateMatch
         public string TeamA { get; set; }
 
         public string TeamB { get; set; }
+
+        public Sport Sport { get; set; }
     }
 
     public class UpdateMatchCommandHandler : IRequestHandler<UpdateMatchCommand>
@@ -46,6 +49,7 @@ namespace Application.Matches.Commands.UpdateMatch
             entity.MatchTime = request.MatchTime;
             entity.TeamA = request.TeamA;
             entity.TeamB = request.TeamB;
+            entity.Sport = request.Sport;
 
             await _context.SaveChangesAsync(cancellationToken);
 

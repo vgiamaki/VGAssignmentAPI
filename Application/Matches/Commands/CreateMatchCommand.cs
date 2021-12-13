@@ -4,6 +4,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
+using Domain.Enums;
 
 namespace Application.Matches.Commands
 {
@@ -19,7 +20,7 @@ namespace Application.Matches.Commands
 
         public string TeamB { get; set; }
 
-       // public Sport Sport { get; set; }
+        public Sport Sport { get; set; }
     }
 
     public class CreateMatchCommandHandler : IRequestHandler<CreateMatchCommand, int>
@@ -39,7 +40,8 @@ namespace Application.Matches.Commands
                 MatchDate=request.MatchDate,
                 MatchTime=request.MatchTime,
                 TeamA=request.TeamA,
-                TeamB=request.TeamB
+                TeamB=request.TeamB,
+                Sport = request.Sport
             };
 
             _context.Matches.Add(entity);
