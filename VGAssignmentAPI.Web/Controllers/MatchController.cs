@@ -30,7 +30,7 @@ namespace VGDemoAPIApp.WebUI.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, UpdateMatchOddCommand command)
+        public async Task<ActionResult> Update(int id, UpdateMatchCommand command)
         {
             if (id != command.Id)
             {
@@ -46,7 +46,7 @@ namespace VGDemoAPIApp.WebUI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            await Mediator.Send(new DeleteMatchOddCommand { Id = id });
+            await Mediator.Send(new DeleteMatchCommand { Id = id });
 
             return Ok("Entity is deleted Successfully");
         }
